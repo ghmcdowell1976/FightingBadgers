@@ -35,6 +35,9 @@ method: "POST"			/* is the information coming/going? */
 
 		/* console log out the response */
 		console.log(response);
+		console.log(response.faces);
+		console.log(response.faces[0].attributes);
+		console.log(response.faces[0].attributes['emotion']);
 	});
 
 
