@@ -39,42 +39,45 @@ method: "POST"			/* is the information coming/going? */
 		console.log(response.faces);
 		console.log(response.faces[0].attributes);
 		console.log(response.faces[0].attributes['emotion']);
+
+		$("#selfie-camera").html("<img src=" + hMan + ">");
 	});
 
-
+/*
 	var imgSrc = function(){
 
-		/* these control the internal camera's functionality */
-		/* ------------------------------------------------- */
+		/* these control the internal camera's functionality 
+		/* ------------------------------------------------- 
 		function on(){
-			/* turns on the camera */
+			/* turns on the camera 
 			console.log("camera is on");
 
 		};
 
 		function capture(){
-			/* takes the photo */
+			/* takes the photo 
 			console.log("say cheese!");
 
-			/* cuts the camera off */
+			/* cuts the camera off 
 			off();
 
-			/* returns image to be analyzed */
+			/* returns image to be analyzed 
 		};
 
 		function off(){
-			/* turns camera off */
+			/* turns camera off 
 		};
 
 
 
 		return {
-			/* everything public */
+			/* everything public 
 			wakeCamera: on,
 
 			useCamera: capture,
 		}
 
 	}();
+*/
 
 });
