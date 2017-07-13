@@ -1,5 +1,43 @@
 project notes
+objects to call in the api for each activity:
+activity StartDate
+activity EndDate
+activity StartTime
+activity EndTime
+activity topic
+activity assetName
+activity assetDescriptions.description
+activity registrationURLAdr
+activity assetAttributes.attribute.attributeValue
 
-1. 
-2.
-3.
+
+///type of events returned on Activities API: results.topic
+
+Endurance:  Running, cycling, swimming, triathlons, duathlons, walking, mountain biking.
+
+Team Sports: Baseball, basketball, soccer, football, hockey, lacrosse, softball.
+
+Youth Camps:  Day camps, overnight camps, youth sports camps.
+
+Tennis Leagues:  USTA sanctioned leagues, tournaments, clinics.
+
+Parks & Recreation: City & county parks, recreational activities, YMCAs, JCCs, Boys and Girls Clubs.
+
+Fitness:  Aerobics, dance, zumba, yoga, Pilates, ballet.
+
+Classes: Crafts, painting, drawing, ceramics, performing arts, photography, theater.
+
+Outdoor Adventure:  Sailing, hiking, climbing, kayaking, rafting, fishing, hunting.
+
+  var disgust =""; classes
+  var fear =""; outdoor adventure
+  var happiness =""; team sports, youth camps, tennis leagues, parks and recreation, fitness, classes
+  var neutral =""; fitness, outdoor adventure
+  var sadness =""; endurance, team sports, tennis leagues, parks and recreation, fitness, classes, outdoor adventure
+  var surprise =""; outdoor adventure, parks and recreation, team sports
+
+
+
+activities you never want to do
+ativities you do want to do
+

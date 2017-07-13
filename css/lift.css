@@ -180,6 +180,11 @@ h1 i {
   left: 27%;
 }
 
+#snapshot{
+  height:400px;
+  width: 400px;
+}
+
 #capture-btn {
   position: relative;
   left: 43%;
