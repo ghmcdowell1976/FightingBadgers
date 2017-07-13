@@ -1,18 +1,55 @@
 "use strict";
 $(document).ready(function(){
 
-function displayActivityInfo(){
-  var mood = ["anger", "disgust", "fear", "happiness", "neutral", "sadness", "surprise"];
-	var anger ="";
-  var disgust ="classes";
-  var fear ="";
-  var happiness ="";
-  var neutral ="";
-  var sadness ="";
-  var surprise ="team sports";
-   var x = moment().format('YYYY-MM-DD');
+
+function displayActivityInfo(feel){
+  var actArray = [];
+
+  switch(feel){
+           	case "anger":
+            actArray = ["outdoor adventure"]
+            returnActivity();
+            break;
+
+            case "disgust":
+            actArray = ["classes"]
+            returnActivity();
+            break;
+
+            case "fear":
+            actArray = ["outdoor adventure"]
+            returnActivity();
+            break;
+
+            case "happiness":
+            actArray = ["parks and recreation", "fitness,classes"]
+            returnActivity();
+            break;
+
+            case "neutral":
+            actArray = ["fitness", "endurance"]
+            returnActivity();
+            break;
+
+            case "sadness":
+            actArray = ["endurance", "team sports", "tennis leagues", "parks and recreation", "fitness", "classes", "outdoor adventure"]
+            returnActivity();
+            break;
+
+            case "surprise":
+            actArray = ["team sports", "outdoor adventure", "parks and recreation"]
+            returnActivity();
+            break;
+  
+}  
+  function returnActivity(){
+  var x = moment().format('YYYY-MM-DD');
     console.log(x);
-	var queryURL = "http://api.amp.active.com/v2/search/?state=GA&start_date=" + x + "..&country=United+States&current_page=1&per_page=15&query=" + disgust + "&sort=distance&api_key=9nxjy2bc2u6wpctkmgk8v44g";
+  // var mood = ["anger", "disgust", "fear", "happiness", "neutral", "sadness", "surprise"];
+  // for (var h = 0; h < mood.length; h++) {
+  //   mood === imgSrc.emotions;
+  // }
+	var queryURL = "http://api.amp.active.com/v2/search/?state=GA&start_date=" + x + "..&country=United+States&current_page=1&per_page=15&query=" + actArray + "&sort=distance&api_key=9nxjy2bc2u6wpctkmgk8v44g";
 	$.ajax({
       url: queryURL,
       method: "GET",
@@ -38,22 +75,27 @@ function displayActivityInfo(){
         html += '<td>' + end + '</td>';
         
         $("tbody").append(html);
+
+        }
         
 
 
-        }
+        })
 
+  }
 
-
-   })
+  // displayActivityInfo(); 
+ 
+   };
 
 
       
 
                
-        }
-        displayActivityInfo();    
-});
+        });
+
+           
+// });
 
     		// response.results: JSON.stringify({
       //      	assetDescriptions : "value";
