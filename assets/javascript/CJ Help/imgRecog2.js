@@ -13,7 +13,6 @@ $(document).ready(function(){
 
 		/* collection(object) of emotions */
 		var feelThat;
-		var exp; 
 
 		/* stuff IDK about */
 		var video = document.querySelector('video');
@@ -23,6 +22,10 @@ $(document).ready(function(){
 		/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 		/* striaght took this stuff from another page */
 
+
+		function errorCallback(e) {
+    		console.log(e);
+  		};
 
 		/* these control the internal camera's functionality */
 		/* ------------------------------------------------- */
@@ -35,28 +38,32 @@ $(document).ready(function(){
 			/* takes the photo */
 			console.log("say cheese!");
 
+		    if (localMediaStream) {
 
-			if (localMediaStream) {
-				/*
-		    	ctx.drawImage(video, 0, 0);
-		    	   "image/webp" works in Chrome.
-		    	   // Other browsers will fall back to image/png
+		    	canvas.height=	300;
+		    	canvas.width=	400;
+		    	ctx.drawImage(video, 0, 0, 700, 400, 0, 0, 500, 300);
 
-		    	   document.querySelector('img').src = canvas.toDataURL('image/webp');
-		    	// document.querySelector('img').src = canvas.toDataURL('image/png');
-		    	dataPic = canvas.toDataURL('image/png');
-		    	*/
+		  //    ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+
+		  // "image/webp" works in Chrome.
+		  // other browsers will fall back to image/png.
+		     
+		      // document.querySelector('img').src = canvas.toDataURL('image/webp');
+		      document.querySelector('video').src = canvas.toDataURL('image/webp');
 		    }
 
 			/* returns image to be analyzed */
 			// prettyPic = $("#snapshot").attr("src");
-			whosThere();
+			prettyPic = canvas.toDataURL('image/webp');
+
+			// whosThere();
 
 			// console.log(prettyPic);
 
 			/* with the image defined, pass it to AJAX */
 			/* we'll evaluate the image based on successful call */
-			// evaluateImg();
+			evaluateImg();
 		};
 
 		function off(){
@@ -65,25 +72,14 @@ $(document).ready(function(){
 		};
 
 
-		function errorCallback(e) {
-    		console.log(e);
-  		}
+  		// video.addEventListener('click', snapshot, false);
+  		// video.addEventListener('click', capture, false);
 
-
-
-
-/*
-  			// video.addEventListener('click', snapshot, false);
-  			video.addEventListener('click', capture, false);
-			// Not showing vendor prefixes or code that works cross-browser.
-			navigator.getUserMedia({video: true}, function(stream) {
-    			video.src = window.URL.createObjectURL(stream);
-    			localMediaStream = stream;
-  			}, errorCallback);
-
-*/
-
-
+		// Not showing vendor prefixes or code that works cross-browser.
+		navigator.getUserMedia({video: true}, function(stream) {
+    		video.src = window.URL.createObjectURL(stream);
+    		localMediaStream = stream;
+  		}, errorCallback);
 
 
 		/* once the image is captured, it gets analyzed here */
@@ -122,7 +118,7 @@ $(document).ready(function(){
 
 				$.ajax({
 
-					url: detects_url + "?api_key="+ myKey + "&api_secret="+ mySec + "&image_url="+ facePic + "&return_landmark=1" + "&return_attributes=" + faceAtts,	/* image URL */
+					url: detects_url + "?api_key="+ myKey + "&api_secret="+ mySec + "&image_url="+ prettyPic + "&return_landmark=1" + "&return_attributes=" + faceAtts,	/* image URL */
 					method: "POST"			/* is the information coming/going? */
 
 				}).done(function(response){
@@ -134,23 +130,26 @@ $(document).ready(function(){
 
 					feelThat = response.faces[0].attributes['emotion'];
 					console.log(feelThat);
-
-					// console.log(response.faces[0].attributes['emotion']);
+										
+					// var emo = response.faces[0].attributes['emotion'];
+					// console.log("emo", emo);
+					// for (var key in emo){
+					// 	console.log(emo[key]);
+					// }
 
 					// $("#selfie-camera").html("<img src=" + prettyPic + ">");
-					$("#selfie-camera").html("<img src=" + facePic + ">");
-
-					feelings(feelThat);
+					// $("#selfie-camera").html("<img src=" +  + ">");
+					feelings();
 				});
 
 			};
 
 		/*
 
-		* this function generates random people to send to Face++ 
-		* https://randomuser.me/
+		 * this function generates random people to send to Face++ 
+		 * https://randomuser.me/
 
-		*/
+		 */
 
 		function whosThere(){
 		/* sets the image variable to be analyzed */
@@ -181,39 +180,39 @@ $(document).ready(function(){
 
 		}
 
+/* 
 
-		/* 
+ *	this function loops through the object keys of emotion
+ *	and returns the emotion with the highest value;
 
-		 *	this function loops through the object keys of emotion
-		 *	and returns the emotion with the highest value;
+ *	it is called after an image is successfully analyzed
+ *	Face++ .done()
 
-		 *	it is called after an image is successfully analyzed
-		 *	Face++ .done()
+ *	inputs: [none]
+ *	return: string
 
-		 *	inputs: [none]
-		 *	return: string
+ */
 
-		 */
-
-		function feelings(Obje){
+		function feelings(){
 
 			/* create  variables that capture  values */
 			/* -------------------------------------- */
 			var emo = 0;
+			var exp; 
 
 				/* loop through the returned keys */
 				/* ------------------------------ */
-				for (var key in Obje){
+				for (var key in feelThat){
 
 					/* compare emotional values */
 					/* ------------------------ */
-					switch( emo < Obje[key] ){
+					switch( emo < feelThat[key] ){
 
 						case (true):
 
 							/* make emo = key value */
 							/* -------------------- */
-							emo = Obje[key];
+							emo = feelThat[key];
 
 							/* set expression = key */
 							/* -------------------- */
@@ -236,10 +235,6 @@ $(document).ready(function(){
 
 			/* return the facial expression */
 			/* ---------------------------- */
-
-			console.log(exp);
-
-			displayActivityInfo(exp);
 			return exp;
 
 		} /* function */
@@ -248,8 +243,7 @@ $(document).ready(function(){
 		/* everything to be made public */
 			wakeCamera: on,
 			useCamera: capture,
-			knockknock: whosThere,
-			howYouFeel: exp;
+			knockknock: whosThere
 		}
 
 	}(); /* end IIFE */
