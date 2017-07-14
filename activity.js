@@ -1,6 +1,4 @@
 "use strict";
-$(document).ready(function(){
-
 
 function displayActivityInfo(feel){
   var actArray = [];
@@ -42,6 +40,7 @@ function displayActivityInfo(feel){
             break;
   
 }  
+    // var happiness = "Endurance"
   function returnActivity(){
   var x = moment().format('YYYY-MM-DD');
     console.log(x);
@@ -49,7 +48,7 @@ function displayActivityInfo(feel){
   // for (var h = 0; h < mood.length; h++) {
   //   mood === imgSrc.emotions;
   // }
-	var queryURL = "http://api.amp.active.com/v2/search/?state=GA&start_date=" + x + "..&country=United+States&current_page=1&per_page=15&query=" + actArray + "&sort=distance&api_key=9nxjy2bc2u6wpctkmgk8v44g";
+	var queryURL = "http://api.amp.active.com/v2/search/?state=GA&start_date=" + x + "..&country=United+States&current_page=1&per_page=15&query=" + happiness + "&sort=distance&api_key=9nxjy2bc2u6wpctkmgk8v44g";
 	$.ajax({
       url: queryURL,
       method: "GET",
@@ -58,6 +57,20 @@ function displayActivityInfo(feel){
         var desc = response.results[i].assetName;
         var start = response.results[i].activityStartDate; 
         var end = response.results[i].activityEndDate;
+
+//         var tableData = '<table>'
+//         $.each(data, function(key, value){
+//         tableData += '<tr>';
+//         tableData += '<td>' + category + '</td>';
+//         tableData += '<td>' + desc + '</td>';
+//         tableData += '<td>' + start + '</td>';
+//         tableData += '<td>' + end + '</td>';
+//         tableData += '</tr>';
+// });
+
+// tableData += '</table>';
+
+// $('#table').html(tableData);
 
         var category = response.results[i].assetCategories[0].category["categoryName"];
         
@@ -92,7 +105,7 @@ function displayActivityInfo(feel){
       
 
                
-        });
+        
 
            
 // });
