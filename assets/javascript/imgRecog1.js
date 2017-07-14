@@ -1,10 +1,10 @@
 "use strict"
 $(document).ready(function(){
 
-		var video = document.querySelector('video');
-	  var canvas = document.querySelector('canvas');
-	  var ctx = canvas.getContext('2d');
-	  var localMediaStream = null;
+	var video = document.querySelector('video');
+	var canvas = document.querySelector('canvas');
+	var ctx = canvas.getContext('2d');
+	var localMediaStream = null;
 
   function errorCallback(e) {
     console.log(e);
