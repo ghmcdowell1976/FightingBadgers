@@ -427,7 +427,16 @@ table{
   padding: 6px 12px;
   display: table-cell;
 }
+<<<<<<< HEAD
 @media screen and (max-width: 580px){
     padding: 2px 12px
     display: block
   }*/
+=======
+
+/*#snapshot{
+
+  height: 750px;
+  width: 600px;
+}*/
+>>>>>>> de67abae5405ca4c3d724090b55397e952ecfac5

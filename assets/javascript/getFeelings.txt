@@ -1,0 +1,64 @@
+/* this function loops through the object keys of emotion
+ * and returns the emotion with the highest value;
+
+ * it is called after an image is successfully analyzed
+ * Face++ .done()
+
+ * inputs: [none]
+ * return: string
+ *
+
+ */
+
+function feelings(){
+
+	/* create  variables that capture  values */
+	/* -------------------------------------- */
+
+	var emo = 0;
+	var exp; 
+
+		/* loop through the returned keys */
+		/* ------------------------------ */
+
+		for (var key in Emotion-Object){
+
+			/* compare emotional values */
+			/* ------------------------ */
+
+			switch( emo < Emotion-Object[key] ){
+
+				case (true):
+
+					/* make emo = key value */
+					/* -------------------- */
+
+					emo = Emotion-Object[key];
+
+					/* set expression = key */
+					/* -------------------- */
+
+					exp = key
+					break;
+
+				case (false):
+
+					/* make emo stay = emo */
+					/* ------------------- */
+
+					emo = emo;
+					break;
+				
+				default:
+					console.log("default");
+
+			} /* switch */
+		
+		} /* for loop */
+
+	/* return the facial expression */
+	/* ---------------------------- */
+
+	return exp;
+
+} /* function */
