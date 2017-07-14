@@ -1,7 +1,5 @@
 "use strict";
 
-
-
 function displayActivityInfo(feel){
   var actArray = [];
 
@@ -42,6 +40,7 @@ function displayActivityInfo(feel){
             break;
   
 }  
+    // var happiness = "Endurance"
   function returnActivity(){
   var x = moment().format('YYYY-MM-DD');
     console.log(x);
@@ -58,6 +57,20 @@ function displayActivityInfo(feel){
         var desc = response.results[i].assetName;
         var start = response.results[i].activityStartDate; 
         var end = response.results[i].activityEndDate;
+
+//         var tableData = '<table>'
+//         $.each(data, function(key, value){
+//         tableData += '<tr>';
+//         tableData += '<td>' + category + '</td>';
+//         tableData += '<td>' + desc + '</td>';
+//         tableData += '<td>' + start + '</td>';
+//         tableData += '<td>' + end + '</td>';
+//         tableData += '</tr>';
+// });
+
+// tableData += '</table>';
+
+// $('#table').html(tableData);
 
         var category = response.results[i].assetCategories[0].category["categoryName"];
         
@@ -91,8 +104,7 @@ function displayActivityInfo(feel){
 
       
 
-               
-     
+              
            
 // });
 
