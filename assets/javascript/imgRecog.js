@@ -249,7 +249,6 @@ $(document).ready(function(){
 			wakeCamera: on,
 			useCamera: capture,
 			knockknock: whosThere,
-			howYouFeel: exp;
 		}
 
 	}(); /* end IIFE */

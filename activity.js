@@ -1,5 +1,5 @@
 "use strict";
-$(document).ready(function(){
+
 
 
 function displayActivityInfo(feel){
@@ -92,8 +92,7 @@ function displayActivityInfo(feel){
       
 
                
-        });
-
+     
            
 // });
 
