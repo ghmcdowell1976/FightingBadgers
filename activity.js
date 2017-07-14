@@ -115,17 +115,23 @@ function displayActivityInfo(feel){
       //   })  
     		// console.log(response.results[i].assetDescriptions);
 
-    		// for (var j = 0; j < response.results[i].assetTopics; j++) {
-    		// 	var description = JSON.stringify(response.results[i].assetTopics);
-    		// 	$(".activities").html(description);
-    		// }
-    		// var firstRowTds = $("table")
-      //      .children()
-      //      .eq(1)
-      //   .children("tr")
-      //   .eq(0)
-      //   .children("td");
-    	
+    	// 	for (var j = 0; j < response.results[i].assetTopics; j++) {
+    	// 		var description = JSON.stringify(response.results[i].assetTopics);
+    	// 		$(".activities").html(description);
+    	// 	}
+    	// 	var firstRowTds = $("table")
+     //       .children()
+     //       .eq(1)
+     //    .children("tr")
+     //    .eq(0)
+     //    .children("td");
+        
+    	// firstRowTds.eq(0).text(response.Title);
+
+     //  firstRowTds.eq(1).text(response.Year);
+
+     //  firstRowTds.eq(2).text(response.Actors);
+     //  firstRowTds.eq(3).text(response.Plot);
 
 
 
