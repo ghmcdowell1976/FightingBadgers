@@ -48,7 +48,7 @@ function displayActivityInfo(feel){
   // for (var h = 0; h < mood.length; h++) {
   //   mood === imgSrc.emotions;
   // }
-	var queryURL = "http://api.amp.active.com/v2/search/?state=GA&start_date=" + x + "..&country=United+States&current_page=1&per_page=15&query=" + happiness + "&sort=distance&api_key=9nxjy2bc2u6wpctkmgk8v44g";
+	var queryURL = "http://api.amp.active.com/v2/search/?state=GA&start_date=" + x + "..&country=United+States&current_page=1&per_page=15&query=" + actArray + "&sort=distance&api_key=9nxjy2bc2u6wpctkmgk8v44g";
 	$.ajax({
       url: queryURL,
       method: "GET",
@@ -104,9 +104,7 @@ function displayActivityInfo(feel){
 
       
 
-               
-        
-
+              
            
 // });
 
