@@ -300,7 +300,6 @@ method: "POST"			/* is the information coming/going? */
 			wakeCamera: on,
 			useCamera: capture,
 			knockknock: whosThere,
-			howYouFeel: exp;
 		}
 
 	}(); /* end IIFE */

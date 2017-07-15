@@ -1,6 +1,4 @@
 "use strict";
-$(document).ready(function(){
-
 
 function displayActivityInfo(feel){
   var actArray = [];
@@ -8,43 +6,48 @@ function displayActivityInfo(feel){
   switch(feel){
            	case "anger":
             actArray = ["outdoor adventure"]
-            returnActivity();
+            returnActivity()
             break;
 
             case "disgust":
             actArray = ["classes"]
-            returnActivity();
+            returnActivity()
             break;
 
             case "fear":
             actArray = ["outdoor adventure"]
-            returnActivity();
+            returnActivity()
             break;
 
             case "happiness":
-            actArray = ["parks and recreation", "fitness,classes"]
-            returnActivity();
+            actArray = ["parks and recreation", "fitness" ,"classes"]
+            returnActivity()
             break;
 
             case "neutral":
             actArray = ["fitness", "endurance"]
-            returnActivity();
+            returnActivity()
             break;
 
             case "sadness":
             actArray = ["endurance", "team sports", "tennis leagues", "parks and recreation", "fitness", "classes", "outdoor adventure"]
-            returnActivity();
+            returnActivity()
             break;
 
             case "surprise":
             actArray = ["team sports", "outdoor adventure", "parks and recreation"]
-            returnActivity();
+            returnActivity()
             break;
+
+        } // switch 
+   
   
-}  
-  function returnActivity(){
+ //sw
+
+//     // var happiness = "Endurance"
+  function returnActivity(){  
   var x = moment().format('YYYY-MM-DD');
-    console.log(x);
+    // console.log(x);
   // var mood = ["anger", "disgust", "fear", "happiness", "neutral", "sadness", "surprise"];
   // for (var h = 0; h < mood.length; h++) {
   //   mood === imgSrc.emotions;
@@ -54,63 +57,83 @@ function displayActivityInfo(feel){
       url: queryURL,
       method: "GET",
     }).done(function(response){
-    	for (var i = 0; i < response.results.length; i++) {
-        var desc = response.results[i].assetName;
-        var start = response.results[i].activityStartDate; 
-        var end = response.results[i].activityEndDate;
 
-        var category = response.results[i].assetCategories[0].category["categoryName"];
+        // console.log(response.results[i].activityStartDate);
+    	for (var i = 0; i < response.results.length; i++) 
+      {
+
+                var start = response.results[i].activityStartDate;
+                var end = response.results[i].activityEndDate;
+                var desc = response.results[i].assetName;
+                var cat = response.results[i].assetCategories[0].category["categoryName"];
+
+                console.log("Category", cat);
+               console.log("Description", desc);
+              console.log("Start", start);
+             console.log("End", end);
+
+        // $(".cd-schedule loading").html(desc);
+// //         // html += '<tr><td>' + category + '</td>';
+// //         // html += '<td>' + desc +'</td>';
+// //         // html += '<td>' + start + '</td>';
+// //         // html += '<td>' + end + '</td>';
+        
+// //         $("tbody").append(html);
+// //         // console.log(feel);
+// //         console.log(desc);
+        
+    //             var tableData = '<table>'
+    //             $.each(function(key, value){
+    //             tableData += '<tr>';
+    //             tableData += '<td>' + category + '</td>';
+    //             tableData += '<td>' + desc + '</td>';
+    //             tableData += '<td>' + start + '</td>';
+    //             tableData += '<td>' + end + '</td>';
+    //             tableData += '</tr>';
+    // }) //end table function
+
+                // tableData += '</table>';
+
+                // $('#table').html(tableData);
+
+// //         // 
         
         
-        console.log(response.results[i]);
-        console.log(response.results[i].assetCategories[0].category["categoryName"]);
-        // console.log("Description", desc);
-        // console.log("Start:", start);
-        // console.log("End:", end);
-               var html = "";        
+// //         // console.log(response.results[i]);
+// //         // console.log(response.results[i].assetCategories[0].category["categoryName"]);
+// //         // console.log("Description", desc);
+// //         // console.log("Start:", start);
+// //         // console.log("End:", end);
         
-        html += '<tr><td>' + category + '</td>';
-        html += '<td>' + desc +'</td>';
-        html += '<td>' + start + '</td>';
-        html += '<td>' + end + '</td>';
+// //         var html = "";        
         
-        $("tbody").append(html);
+// //         html += '<tr><td>' + category + '</td>';
+// //         html += '<td>' + desc +'</td>';
+// //         html += '<td>' + start + '</td>';
+// //         html += '<td>' + end + '</td>';
+        
+// //         $("tbody").append(html);
 
-        }
+        } // end of for loop
         
 
 
-        })
+// //       }); //do
 
-  }
+// //   }; //end of returnActivity function
 
-  // displayActivityInfo(); 
+// //   // displayActivityInfo(); 
  
-   };
+   }); //done function
 
-
+    } //second function
       
-
-               
-        });
-
+ } // top function
+              
            
-// });
+// // // });
 
-    		// response.results: JSON.stringify({
-      //      	assetDescriptions : "value";
-      //     	activityStartDate: "value";
-      //     	activityEndDate: "value";
-      //     })
 
-    		// var activities = JSON.stringify(response.results[i].asset.assetDescriptions);
-        // for (var i = 0; i < activities.length; i++) {
-          // $(".activities").html(activities);
-          // console.log(response.results[i].assets);
-        // }
-    		
-    		// response.forEach(function(data) {
-        
 
       //   })  
     		// console.log(response.results[i].assetDescriptions);
