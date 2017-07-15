@@ -2,7 +2,8 @@
 
 function displayActivityInfo(feel){
   var actArray = [];
-
+  console.log(feel);
+  $("#mood").html(feel);
   switch(feel){
            	case "anger":
             actArray = ["outdoor adventure"]
@@ -82,29 +83,39 @@ function displayActivityInfo(feel){
 // //         // console.log(feel);
 // //         console.log(desc);
         
-    //             var tableData = '<table>'
-    //             $.each(function(key, value){
-    //             tableData += '<tr>';
-    //             tableData += '<td>' + category + '</td>';
-    //             tableData += '<td>' + desc + '</td>';
-    //             tableData += '<td>' + start + '</td>';
-    //             tableData += '<td>' + end + '</td>';
-    //             tableData += '</tr>';
-    // }) //end table function
+                var tableData = "<table>"
+                $.each(response, function(key, value){
+                //   $(this).css("border", 'border-left', '1px solid red');
+                tableData += "<tr>";
+                tableData += "<td>" + cat + "</td>";
+                tableData += '<td>' + desc + '</td>';
+                tableData += '<td>' + start + '</td>';
+                tableData += '<td>' + end + '</td>';
+                tableData += '</tr>';
+    }) //end table function
 
-                // tableData += '</table>';
+                tableData += '</table>';
 
-                // $('#table').html(tableData);
+                $('#table').html(tableData);
+                $(".activities").html(tableData);
 
+// response = $.parseJSON(response);
+
+// $(function() {
+//     $.each(response, function(i, item) {
+//         var $tr = $('<tr>').append(
+//             $('<td>').text(cat),
+//             $('<td>').text(desc),
+//             $('<td>').text(start),
+//             $('<td>').text(end)
+//         ); //.appendTo('#records_table');
+//         console.log($tr.wrap('<p>').html());
+//     });
+// });
 // //         // 
         
         
-// //         // console.log(response.results[i]);
-// //         // console.log(response.results[i].assetCategories[0].category["categoryName"]);
-// //         // console.log("Description", desc);
-// //         // console.log("Start:", start);
-// //         // console.log("End:", end);
-        
+     
 // //         var html = "";        
         
 // //         html += '<tr><td>' + category + '</td>';
@@ -116,6 +127,7 @@ function displayActivityInfo(feel){
 
         } // end of for loop
         
+
 
 
 // //       }); //do
