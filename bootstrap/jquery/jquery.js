@@ -9906,7 +9906,7 @@ jQuery.expr.pseudos.animated = function( elem ) {
 
 
 
-jQuery.offset = {
+jQuery. = {
 	setOffset: function( elem, options, i ) {
 		var curPosition, curLeft, curCSSTop, curTop, curOffset, curCSSLeft, calculatePosition,
 			position = jQuery.css( elem, "position" ),
