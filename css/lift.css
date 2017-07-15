@@ -67,7 +67,7 @@ body {
     right: 0;
     padding: 13px;
     text-transform: uppercase;
-    color: white;
+    color: #20b0b6;
     border: 0;
     background-color: #fed136;
     font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -84,11 +84,11 @@ body {
       font-weight: 400;
       padding: .75em 0;
       letter-spacing: 1px;
-      color: white;
+      color: #20b0b6;
       font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       text-transform: uppercase; }
       #mainNav .container .navbar-nav .nav-item .nav-link:hover, #mainNav .container .navbar-nav .nav-item .nav-link.active {
-        color: #20b0b6; }
+        color: #fec503; }
 
 @media (min-width: 992px) {
   #mainNav {
@@ -114,7 +114,7 @@ body {
 
 header.masthead {
   text-align: center;
-  color: white;
+  color: #20b0b6;
   background-image: url("../images/watercolor-color-wheel.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -143,12 +143,12 @@ header.masthead {
 
 @media (min-width: 768px) {
   header.masthead .intro-text {
-    padding-top: 300px;
+    padding-top: 150px;
     padding-bottom: 200px; }
     header.masthead .intro-text .intro-lead-in {
-      font-size: 40px;
+      font-size: 30px;
       font-style: italic;
-      line-height: 40px;
+      line-height: 3ssss0px;
       margin-bottom: 25px;
       font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
     header.masthead .intro-text .intro-heading {
@@ -175,20 +175,38 @@ h1 i {
   margin: 15px 0;
   text-transform: none; }
 
+/*section#camera{
+  text-align: center;
+  color: white;
+  background-image: url("../images/watercolor-color-wheel.jpg");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain; }
+
+*/
 #selfie-camera {
   position: relative;
-  left: 27%;
+  left: 32%;
+
 }
+
 
 #snapshot{
   height:400px;
   width: 400px;
+  margin-bottom: 10px;
 }
 
 #capture-btn {
   position: relative;
-  left: 43%;
-  margin-top: 30px;
+/*  left: 43%;*/
+  bottom: 100px;
+  right: 180px;
+  margin-top: 10px;
 }
 
 .loader {

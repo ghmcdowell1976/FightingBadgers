@@ -29,12 +29,12 @@ Classes: Crafts, painting, drawing, ceramics, performing arts, photography, thea
 
 Outdoor Adventure:  Sailing, hiking, climbing, kayaking, rafting, fishing, hunting.
 
-  var disgust =""; classes
-  var fear =""; outdoor adventure
-  var happiness =""; team sports, youth camps, tennis leagues, parks and recreation, fitness, classes
-  var neutral =""; fitness, outdoor adventure
-  var sadness =""; endurance, team sports, tennis leagues, parks and recreation, fitness, classes, outdoor adventure
-  var surprise =""; outdoor adventure, parks and recreation, team sports
+  var disgust = classes
+  var fear = outdoor adventure
+  var happiness = team sports, youth camps, tennis leagues, parks and recreation, fitness, classes
+  var neutral = fitness, outdoor adventure
+  var sadness = endurance, team sports, tennis leagues, parks and recreation, fitness, classes, outdoor adventure
+  var surprise = outdoor adventure, parks and recreation, team sports
 
 
 
