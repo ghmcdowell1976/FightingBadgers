@@ -82,6 +82,7 @@ $(document).ready(function(){
   		}, errorCallback);
 
 
+
 		/* once the image is captured, it gets analyzed here */
 		/* sends images to Face++ */
 		/* ------------------------------------------------- */

@@ -8,20 +8,18 @@ $(document).ready(function(){
 		var prettyPic;
 		var dataPic;
 
-		/* will be a string defined by random face generator */
+		/* a string defined by random face API */
 		var facePic;
 
 		/* collection(object) of emotions */
 		var feelThat;
 		var exp; 
 
-		/* stuff IDK about */
+		/* variables used by the internal camera */
 		var video = document.querySelector('video');
 		var canvas = document.querySelector('canvas');
 		var ctx = canvas.getContext('2d');
 		var localMediaStream = null;
-		/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
-		/* striaght took this stuff from another page */
 
 
 		/* these control the internal camera's functionality */
@@ -35,28 +33,45 @@ $(document).ready(function(){
 			/* takes the photo */
 			console.log("say cheese!");
 
-
 			if (localMediaStream) {
-				/*
-		    	ctx.drawImage(video, 0, 0);
-		    	   "image/webp" works in Chrome.
-		    	   // Other browsers will fall back to image/png
 
-		    	   document.querySelector('img').src = canvas.toDataURL('image/webp');
-		    	// document.querySelector('img').src = canvas.toDataURL('image/png');
-		    	dataPic = canvas.toDataURL('image/png');
-		    	*/
+		    	canvas.height=	300;
+		    	canvas.width=	400;
+		    	ctx.drawImage(video, 0, 0, 700, 400, 0, 0, 500, 300);
+
+		    	/*
+				...
+				demonstration of how to size the canvas that hosts the phootgraph:
+		  		ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+				...
+		  		 */
+
+				/* 
+				...
+				Chrome supports "image/webp"
+				other browsers will fall back to image/png
+				...
+		  		 */
+		     
+		    	document.querySelector('video').src = canvas.toDataURL('image/webp');
 		    }
 
-			/* returns image to be analyzed */
-			// prettyPic = $("#snapshot").attr("src");
+		    /*
+		    ...
+		    under normal circumstance, the captured image from above would be sent
+		    in this case, we will call a random face generator to use for Face ++
+		    ...
+
+		     */
+
+
+			/*
+			...
+			this calls a random face generator that produces an image to be analyzed
+			...
+			 */
 			whosThere();
 
-			// console.log(prettyPic);
-
-			/* with the image defined, pass it to AJAX */
-			/* we'll evaluate the image based on successful call */
-			// evaluateImg();
 		};
 
 		function off(){
@@ -70,50 +85,28 @@ $(document).ready(function(){
   		}
 
 
-
-
-/*
-  			// video.addEventListener('click', snapshot, false);
-  			video.addEventListener('click', capture, false);
-			// Not showing vendor prefixes or code that works cross-browser.
-			navigator.getUserMedia({video: true}, function(stream) {
-    			video.src = window.URL.createObjectURL(stream);
-    			localMediaStream = stream;
-  			}, errorCallback);
-
-*/
-
+		/* not showing vendor prefixes or code that works cross-browser */
+		/* ------------------------------------------------------------ */
+		navigator.getUserMedia({video: true}, function(stream) {
+    		video.src = window.URL.createObjectURL(stream);
+    		localMediaStream = stream;
+  		}, errorCallback);
 
 
 
 		/* once the image is captured, it gets analyzed here */
-		/* sends images to Face++ */
 		/* ------------------------------------------------- */
 
 		function evaluateImg(){
 
 			/* calls to Face++ */
-			/* here are the URLs to request information from F++ */
-			/* ------------------------------------------------- */
-			// var request_url = "https://api-us.faceplusplus.com/facepp/v3/face/analyze";
+			/* here is the URLs to request information from Face++ */
+			/* --------------------------------------------------- */
 			var detects_url = "https://api-us.faceplusplus.com/facepp/v3/detect";
 
 			/* necessary keys */
 			var myKey = "M-I560kGVe7hslv83g_CTxfVNU1qtO3u";		/* api key */
 			var mySec = "LZ7qc7rfLRPKuS1DxYrEeoi1jBQUcWD2";		/* api secret */
-
-
-			/* sample images from the web */
-			/* -------------------------- */
-
-			/* smiling man to be used in the trial */			
-			//var hMan = "http://cdn.acidcow.com/pics/20110408/smiles_24.jpg";
-
-			/* frowning prez */
-			//var sMan = "http://drvidyahattangadi.com/wp-content/uploads/2014/07/A110.jpg";
-
-			/* image with no face */
-			//var trees = "https://winecountryinn.com/wp-content/uploads/2015/06/ThinkstockPhotos-473353782.jpg"
 
 			/* return attributes string */
 			/* this is the information we want Face++ to return about the faces it sees */
@@ -138,7 +131,7 @@ $(document).ready(function(){
 					// console.log(response.faces[0].attributes['emotion']);
 
 					// $("#selfie-camera").html("<img src=" + prettyPic + ">");
-					$("#selfie-camera").html("<img src=" + facePic + ">");
+					// $("#selfie-camera").html("<img src=" + facePic + ">");
 
 					feelings(feelThat);
 				});
@@ -162,18 +155,18 @@ $(document).ready(function(){
 	    		// console.log(data);
 
 	    		/* drill down into the object until we get to the image source */
+	    		/* ----------------------------------------------------------- */
 	    		// console.log(data.results[0]);
 	    		// console.log(data.results[0].picture);
 	    		// console.log(data.results[0].picture["large"]);
 
 	    		console.log("It's me, " + data.results[0].name["first"]);
-	    		// console.log(data.results[0].name["first" + "last"]);
 
 	    		/* set the picture to someone who needs to use the app */
 	    		facePic = data.results[0].picture["large"];
 
 	    		/* posts the picture to the site */
-	    		$("#selfie-camera").html("<img src=" + facePic + ">");	    		
+	    		// $("#selfie-camera").html("<img src=" + facePic + ">");	    		
 
 	    		/* because the call was successful, scan it with Face++ */
 	    		evaluateImg();
@@ -258,5 +251,6 @@ $(document).ready(function(){
 
 $("#capture-btn").on("click", imgSrc.useCamera);
 // $("#capture-btn").on("click", imgSrc.knockknock);
+$("#results-btn").on("click", returnActivity);
 
 }); /* ends the document ready */
